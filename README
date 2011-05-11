@@ -1,0 +1,6 @@
+This is chrome extension whitch add dictionary list on right click menu.
+
+load unpacked extension to use from developer mode in chrome's extnsion page.
+
+add dictionary url which contains the word #{word} string. the string will be
+replaced by the selected word.
