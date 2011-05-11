@@ -1,0 +1,9 @@
+{
+  "name": "Right Click Dictionary",
+  "description": "find word from dictionary on right click",
+  "version": "0.1",
+  "permissions": ["contextMenus", "tabs"],
+  "background_page": "background.html",
+  "options_page": "options.html",
+  "default_locale":"en"
+}

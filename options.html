@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src = "/javascript/util.js"></script>
+    <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8">
+    <link rel = "stylesheet" href = "/css/options.css"/>
+    <script src = "/javascript/options.js"></script>
+  </head>
+  <body onload = "initialize();">
+    <div id = "all_content">
+      <div id = "logo">
+        <h2>Right Click Dictionary Options</h2>
+        <br/>
+      </div>
+      <br/><br/>
+      <table>
+        <tr class = "all_rows">
+          <td class = "col1">
+            <div id = "custom_text" style = "font-weight: bold;">Add Custom Dictionary</div>
+          </td>
+          <td class = "col2">
+            <input id = "newKeyword" type = "text" style = "width:90%;">
+            <input id = "submit_button" type = "submit" onclick = "addCusDictionary()" value="Add" style = "">
+            <span id = "invalid_status"></span>
+            <table>
+              <tbody id = "custom_dictionaries"></tbody>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <br/>
+      <div id = "save_div">
+        <button id = "save_button" type = "button" onclick = "saveOptions()" style = "width: 80px;">
+        </button>
+        <span id = "save_status"></span>
+      </div>
+
+  </body>
+</html>
