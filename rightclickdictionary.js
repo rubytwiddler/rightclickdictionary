@@ -9,7 +9,8 @@ function menuOnClick(info, tab) {
 
     var word = info.selectionText.replace(/^\s+/,'').replace(/[^\w\-].*$/,'');
     var dicObj = menuTbl[info.menuItemId];
-    var uri = dicObj.uri.replace(/#{word}/, word);
+    var uri = dicObj.uri.replace(/#{word}/g, word);
+    uri = uri.replace(/%s/g, word);
     console.log("jump url: " + uri);
 
     function onCreateTab(tab) {
