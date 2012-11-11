@@ -27,8 +27,8 @@ function menuOnClick(info, tab) {
 
 function onRemovedTab(tabId) {
     console.log("tab removed: " + tabId);
-    for(id in menuTbl) {
-        dicObj = menuTbl[id];
+    for(var id in menuTbl) {
+        var dicObj = menuTbl[id];
         console.log("check dicObj: " + JSON.stringify(dicObj));
         if (dicObj.tabId == tabId) {
             dicObj.tabId = false;
@@ -36,10 +36,30 @@ function onRemovedTab(tabId) {
     }
 }
 
+function onUpdatedTab(tabId, info, tab)
+{
+    if (tab.url) {
+        for(var id in menuTbl) {
+            var dicObj = menuTbl[id];
+            var site = dicObj.uri;
+            var domain = site.match(/\/\/[^\/]*/)[0].substr(2);
+            var domReg = new RegExp(domain);
+            // insert tabId
+            if (tab.url.match(domReg)) {
+                if (!dicObj.tabId) {
+                    dicObj.tabId = tabId;
+                }
+                break;
+            }
+        }
+    }
+}
+
 menuTbl = new Array();
 
 function addDictionarySite(site) {
-    var title = "the word in " + site.match(/\/\/[^\/]*/)[0].substr(2);
+    var domain = site.match(/\/\/[^\/]*/)[0].substr(2);
+    var title = "the word in " + domain;
     var menuId = chrome.contextMenus.create(
   {"title": title, "contexts":["selection"], "onclick": menuOnClick});
     var dicObj = new Object();
@@ -62,3 +82,4 @@ if (cusDictionaries) {
 }
 
 chrome.tabs.onRemoved.addListener(onRemovedTab);
+chrome.tabs.onUpdated.addListener(onUpdatedTab);

@@ -2,7 +2,10 @@
   "name": "Right Click Dictionary",
   "description": "find word from dictionary on right click",
   "version": "0.1",
+  "manifest_version": 2,
   "permissions": ["contextMenus", "tabs"],
-  "background_page": "background.html",
+  "background": {
+    "page": "background.html"
+  },
   "options_page": "options.html"
 }
